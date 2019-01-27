@@ -9,7 +9,7 @@ using namespace spdlog;
 namespace inexor {
 
 	// Static instances of the Inexor application(s)
-	std::vector<InexorApplication *> InexorApplication::instances;
+        // std::vector<InexorApplication *> InexorApplication::instances;
 
 	InexorApplication::InexorApplication(
 		std::shared_ptr<inexor::entity_system::EntitySystem> entity_system,
@@ -33,7 +33,7 @@ namespace inexor {
 
 		// Register application instance in static vector
 		// You can't do this in the constructor
-		InexorApplication::instances.push_back(this);
+                //InexorApplication::instances.push_back(this);
 
 		// Logging initialization
 		log_manager->init();
@@ -60,9 +60,7 @@ namespace inexor {
 
 			// Setup REST server
 			rest_server->set_service(rest_server);
-			rest_server->set_signal_handler(SIGINT, InexorApplication::call_sighup_handlers);
-			rest_server->set_signal_handler(SIGTERM, InexorApplication::call_sigterm_handlers);
-			rest_server->set_ready_handler(InexorApplication::call_ready_handlers);
+                        rest_server->set_ready_handler([this](Service& service) { ready_handler(service); });
 			rest_server->init();
 			rest_server->set_logger(std::make_shared<RestServerLogger>());
 			rest_server->startService(0);
@@ -84,7 +82,6 @@ namespace inexor {
 			spdlog::get(LOGGER_NAME)->info("Uptime: {} s", rest_server->get_uptime().count());
 		}
 	    spdlog::get(LOGGER_NAME)->info("Inexor is no longer running");
-            std::exit(EXIT_SUCCESS); // exit run thread
 	}
 
 	void InexorApplication::shutdown()
@@ -98,16 +95,6 @@ namespace inexor {
 		} else {
 			spdlog::get(LOGGER_NAME)->info("Not running");
 		}
-	}
-
-	void InexorApplication::restart()
-	{
-	    spdlog::get(LOGGER_NAME)->info("Restarting Inexor...");
-		shutdown();
-		std::this_thread::sleep_for(1s);
-		std::thread start_thread(&inexor::InexorApplication::start, this);
-		std::thread run_thread(&inexor::InexorApplication::run, this);
-	    spdlog::get(LOGGER_NAME)->info("Restart completed");
 	}
 
 	void InexorApplication::register_logger(std::string logger_name) {
@@ -125,25 +112,12 @@ namespace inexor {
 		return rest_server;
 	}
 
-	void InexorApplication::sighup_handler(const int signal_number)
-	{
-	    spdlog::get(LOGGER_NAME)->info("Received SIGINT signal number {}", signal_number);
-	    restart();
-	}
-
-	void InexorApplication::sigterm_handler(const int signal_number)
-	{
-	    spdlog::get(LOGGER_NAME)->info("Received SIGTERM signal number {}", signal_number);
-		shutdown();
-	}
-
-	void InexorApplication::ready_handler(Service&)
+        void InexorApplication::ready_handler(Service& service)
 	{
 	    spdlog::get(LOGGER_NAME)->info("REST server is running on http://localhost:{}/{}", rest_server->get_settings()->get_port(), rest_server->get_settings()->get_root());
 
-		// Set running state
-		running = true;
-
+            // Set running state
+            running = true;
 	}
 
 };
