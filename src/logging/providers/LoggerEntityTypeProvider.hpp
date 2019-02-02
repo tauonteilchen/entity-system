@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "entity-system/managers/entities/entity-type-builder-manager/EntityTypeBuilderManager.hpp"
 #include "entity-system/providers/entities/entity-type-provider/EntityTypeProvider.hpp"
 
 using namespace inexor::entity_system;
@@ -32,6 +33,10 @@ namespace logging {
 
 			/// Destructor.
 			~LoggerEntityTypeProvider() {};
+
+			// static string ATTTRIBUTE_LOGGER_NAME = "logger_name";
+
+			// static string ATTTRIBUTE_LOG_LEVEL = "log_level";
 
 	};
 

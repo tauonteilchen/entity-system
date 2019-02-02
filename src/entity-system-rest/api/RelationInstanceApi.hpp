@@ -13,14 +13,19 @@
 #pragma once
 
 #include <memory>
+#include <corvusoft/restbed/request.hpp>
+#include <corvusoft/restbed/resource.hpp>
+#include <corvusoft/restbed/service.hpp>
+#include <corvusoft/restbed/session.hpp>
+#include <corvusoft/restbed/status_code.hpp>
+#include <corvusoft/restbed/status_code.hpp>
 #include <crossguid/guid.hpp>
 #include <string>
-#include <restbed>
 
 #include "spdlog/spdlog.h"
 
-#include "../model/EntitySystemMessage.hpp"
-#include "../model/RelationInstance.hpp"
+#include "../model/EntitySystemMessageDto.hpp"
+#include "../model/RelationInstanceDto.hpp"
 
 #include "entity-system/managers/relations/relation-instance-manager/RelationInstanceManager.hpp"
 

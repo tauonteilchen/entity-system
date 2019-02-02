@@ -10,25 +10,21 @@
  * Do not edit the class manually.
  */
 
+
 #include "RelationTypeApi.hpp"
 
-#include <map>
-#include <crossguid/guid.hpp>
-
-#include <corvusoft/restbed/byte.hpp>
-#include <corvusoft/restbed/string.hpp>
-#include <corvusoft/restbed/settings.hpp>
-#include <corvusoft/restbed/request.hpp>
 
 namespace inexor {
 namespace entity_system {
 namespace rest {
 namespace api {
 
+
 using namespace inexor::entity_system::rest::model;
 using namespace xg;
 using namespace restbed;
 using namespace std;
+
 
 RelationTypeApi::RelationTypeApi(
 	std::shared_ptr<RelationTypeApiRelationsTypesRelation_type_uuidResource> spRelationTypeApiRelationsTypesRelation_type_uuidResource,
@@ -95,7 +91,7 @@ void RelationTypeApiRelationsTypesRelation_type_uuidResource::POST_method_handle
 			 */
 			
 			// Getting the path params
-			const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+			const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 			
 
 			
@@ -123,7 +119,7 @@ void RelationTypeApiRelationsTypesRelation_type_uuidResource::DELETE_method_hand
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+	const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 
 	// Change the value of this variable to the appropriate response before sending the response
 	int status_code = 200;
@@ -133,12 +129,12 @@ void RelationTypeApiRelationsTypesRelation_type_uuidResource::DELETE_method_hand
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(200, "Success message", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -150,7 +146,7 @@ void RelationTypeApiRelationsTypesRelation_type_uuidResource::GET_method_handler
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+	const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 
 	// Change the value of this variable to the appropriate response before sending the response
 	int status_code = 200;
@@ -160,12 +156,12 @@ void RelationTypeApiRelationsTypesRelation_type_uuidResource::GET_method_handler
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<RelationType> response = NULL;
+		std::shared_ptr<RelationTypeDto> response = NULL;
 		session->close(200, "An relation type", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -235,12 +231,12 @@ void RelationTypeApiRelationsTypesResource::DELETE_method_handler(const std::sha
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(200, "Success message", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -258,12 +254,12 @@ void RelationTypeApiRelationsTypesResource::GET_method_handler(const std::shared
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<RelationType> response = NULL;
+		std::shared_ptr<RelationTypeDto> response = NULL;
 		session->close(200, "Array of relation types", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -289,7 +285,7 @@ void RelationTypeApiEntitiesTypesEntity_type_uuidRelationsIncomingResource::GET_
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+	const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 
 
 
@@ -331,7 +327,7 @@ void RelationTypeApiEntitiesTypesEntity_type_uuidRelationsOutgoingResource::GET_
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+	const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 
 
 
@@ -373,8 +369,8 @@ void RelationTypeApiEntitiesInstancesEntity_instance_uuidRelationsRelation_type_
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
-	const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
+	const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 
 
 
@@ -416,7 +412,7 @@ void RelationTypeApiEntitiesTypesEntity_type_uuidRelationsResource::GET_method_h
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+	const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 
 
 
@@ -458,8 +454,8 @@ void RelationTypeApiEntitiesInstancesEntity_instance_uuidRelationsRelation_type_
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
-	const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
+	const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 
 
 
@@ -501,8 +497,8 @@ void RelationTypeApiEntitiesInstancesEntity_instance_uuidRelationsRelation_type_
 	const auto request = session->get_request();
 			
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
-	const std::string relationTypeUuid = request->get_path_parameter("relationTypeUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
+	const std::string relation_type_uuid = request->get_path_parameter("relation_type_uuid", "");
 
 
 

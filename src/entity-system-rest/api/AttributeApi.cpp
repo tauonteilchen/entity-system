@@ -13,17 +13,18 @@
 
 #include "AttributeApi.hpp"
 
-#include <crossguid/guid.hpp>
 
 namespace inexor {
 namespace entity_system {
 namespace rest {
 namespace api {
 
+
 using namespace inexor::entity_system::rest::model;
 using namespace xg;
 using namespace restbed;
 using namespace std;
+
 
 AttributeApi::AttributeApi(
 	std::shared_ptr<AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource> spAttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource,
@@ -75,7 +76,7 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource::PO
 			 */
 			
 			// Getting the path params
-			const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
+			const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
 			const std::string name = request->get_path_parameter("name", "");
 			
 
@@ -104,7 +105,7 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource::DE
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
 	const std::string name = request->get_path_parameter("name", "");
 
 
@@ -117,12 +118,12 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource::DE
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(200, "Success message", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -133,7 +134,7 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource::GE
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
 	const std::string name = request->get_path_parameter("name", "");
 
 
@@ -146,12 +147,12 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesNameResource::GE
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<Attribute> response = NULL;
+		std::shared_ptr<AttributeDto> response = NULL;
 		session->close(200, "The attribute", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -189,7 +190,7 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesNameResource::POST_metho
 			 */
 			
 			// Getting the path params
-			const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+			const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 			const std::string name = request->get_path_parameter("name", "");
 			
 
@@ -218,7 +219,7 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesNameResource::DELETE_met
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+	const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 	const std::string name = request->get_path_parameter("name", "");
 
 
@@ -231,12 +232,12 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesNameResource::DELETE_met
 	 */
 
 	if (status_code == 200) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(200, "Success message", { {"Connection", "close"} });
 		return;
 	}
 	if (status_code == 0) {
-		std::shared_ptr<EntitySystemMessage> response = NULL;
+		std::shared_ptr<EntitySystemMessageDto> response = NULL;
 		session->close(0, "unexpected error", { {"Connection", "close"} });
 		return;
 	}
@@ -248,7 +249,7 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesNameResource::GET_method
 	const auto request = session->get_request();
 
 			// Getting the path params
-			const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+			const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 			const std::string name = request->get_path_parameter("name", "");
 			
 
@@ -261,12 +262,12 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesNameResource::GET_method
 			 */
 			
 			if (status_code == 200) {
-				std::shared_ptr<Attribute> response = NULL;
+				std::shared_ptr<AttributeDto> response = NULL;
 				session->close(200, "The attribute", { {"Connection", "close"} });
 				return;
 			}
 			if (status_code == 0) {
-				std::shared_ptr<EntitySystemMessage> response = NULL;
+				std::shared_ptr<EntitySystemMessageDto> response = NULL;
 				session->close(0, "unexpected error", { {"Connection", "close"} });
 				return;
 			}
@@ -291,7 +292,7 @@ void AttributeApiEntitiesInstancesEntity_instance_uuidAttributesResource::GET_me
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityInstanceUuid = request->get_path_parameter("entityInstanceUuid", "");
+	const std::string entity_instance_uuid = request->get_path_parameter("entity_instance_uuid", "");
 
 
 
@@ -332,7 +333,7 @@ void AttributeApiEntitiesTypesEntity_type_uuidAttributesResource::GET_method_han
 	const auto request = session->get_request();
 
 	// Getting the path params
-	const std::string entityTypeUuid = request->get_path_parameter("entityTypeUuid", "");
+	const std::string entity_type_uuid = request->get_path_parameter("entity_type_uuid", "");
 
 
 

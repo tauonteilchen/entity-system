@@ -13,17 +13,21 @@
 #pragma once
 
 #include <memory>
+#include <corvusoft/restbed/request.hpp>
+#include <corvusoft/restbed/resource.hpp>
+#include <corvusoft/restbed/service.hpp>
+#include <corvusoft/restbed/session.hpp>
+#include <corvusoft/restbed/status_code.hpp>
 #include <crossguid/guid.hpp>
 #include <string>
-#include <restbed>
 
 #include "spdlog/spdlog.h"
 
-#include "../../entity-system/managers/entity-attributes/entity-attribute-instance-manager/EntityAttributeInstanceManager.hpp"
-#include "../../entity-system/managers/entity-attributes/entity-attribute-type-manager/EntityAttributeTypeManager.hpp"
-#include "../model/Attribute.hpp"
-#include "../model/EntitySystemMessage.hpp"
-#include "../model/EntityType.hpp"
+#include "entity-system/managers/entity-attributes/entity-attribute-instance-manager/EntityAttributeInstanceManager.hpp"
+#include "entity-system/managers/entity-attributes/entity-attribute-type-manager/EntityAttributeTypeManager.hpp"
+#include "../model/AttributeDto.hpp"
+#include "../model/EntitySystemMessageDto.hpp"
+#include "../model/EntityTypeDto.hpp"
 
 
 using namespace inexor::entity_system::rest::model;

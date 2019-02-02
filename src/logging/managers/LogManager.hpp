@@ -9,11 +9,11 @@
 #include "spdlog/sinks/rotating_file_sink.h"
 
 #include "entity-system/managers/entities/entity-type-builder-manager/EntityTypeBuilderManager.hpp"
-#include "entity-system/managers/entities/entity-instance-builder-manager/EntityInstanceBuilderManager.hpp"
 #include "entity-system/managers/entities/entity-instance-manager/EntityInstanceManager.hpp"
 #include "entity-system/model/data/DataTypes.hpp"
 #include "entity-system/util/type-definitions/TypeDefinitions.hpp"
 
+#include "logging/factories/LoggerFactory.hpp"
 #include "logging/providers/LoggerEntityTypeProvider.hpp"
 
 using namespace inexor::entity_system;
@@ -31,7 +31,7 @@ namespace logging {
 			/// Constructor.
 			LogManager(
 				shared_ptr<LoggerEntityTypeProvider> logger_entity_type_provider,
-				shared_ptr<EntityInstanceBuilderManager> entity_instance_builder_manager,
+				shared_ptr<LoggerFactory> logger_factory,
 				shared_ptr<EntityInstanceManager> entity_instance_manager
 			);
 
@@ -61,8 +61,8 @@ namespace logging {
 			/// The entity type provider
 			shared_ptr<LoggerEntityTypeProvider> logger_entity_type_provider;
 
-			/// The entity instance manager
-			shared_ptr<EntityInstanceBuilderManager> entity_instance_builder_manager;
+			/// The entity type provider
+			shared_ptr<LoggerFactory> logger_factory;
 
 			/// The entity instance manager
 			shared_ptr<EntityInstanceManager> entity_instance_manager;

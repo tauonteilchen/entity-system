@@ -23,6 +23,10 @@
 #include "entity-system-rest/RestServerLogger.hpp"
 #include "entity-system-example/ColorManager.hpp"
 
+#include "type-system/managers/TypeSystemManager.hpp"
+
+#include "configuration/managers/ConfigurationManager.hpp"
+
 #include "logging/managers/LogManager.hpp"
 
 
@@ -43,6 +47,8 @@ namespace inexor {
 			/// The dependencies defined are automatically injected!
                         InexorApplication(
 				std::shared_ptr<inexor::entity_system::EntitySystem> entity_system,
+				std::shared_ptr<inexor::entity_system::type_system::TypeSystemManager> type_system_manager,
+				std::shared_ptr<inexor::configuration::ConfigurationManager> configuration_manager,
 				std::shared_ptr<inexor::entity_system::RestServer> rest_server,
 				std::shared_ptr<inexor::logging::LogManager> log_manager
 			);
@@ -77,6 +83,12 @@ namespace inexor {
 
             /// The entity system of Inexor
             std::shared_ptr<inexor::entity_system::EntitySystem> entity_system;
+
+            /// The type system manager.
+            std::shared_ptr<inexor::entity_system::type_system::TypeSystemManager> type_system_manager;
+
+            /// The type system manager.
+            std::shared_ptr<inexor::configuration::ConfigurationManager> configuration_manager;
 
             /// The REST server of the entity system
             std::shared_ptr<inexor::entity_system::RestServer> rest_server;
